@@ -19,19 +19,21 @@ public class Radix {
     return length;
   }
 
-  // public static void merge(MyLinkedList original,MyLinkedList[]buckets){
-  //
-  // }
+  public static void merge(SortableLinkedList original,SortableLinkedList[]buckets){
+    for(int i=0; i<buckets.length; i++){
+      original.extend(buckets[i]);
+    }
+  }
 
   //Tester
-  public static void main(String[]args){
-    Radix r = new Radix();
-    int a =-2345;
-    int b =0;
-    int c= 21001245;
-    System.out.println(r.length(a));
-    System.out.println(r.length(b));
-    System.out.println(r.length(c));
-  }
+  // public static void main(String[]args){
+  //   Radix r = new Radix();
+  //   int a =-2345;
+  //   int b =0;
+  //   int c= 21001245;
+  //   System.out.println(r.length(a));
+  //   System.out.println(r.length(b));
+  //   System.out.println(r.length(c));
+  // }
 
 }
