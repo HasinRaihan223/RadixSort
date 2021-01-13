@@ -22,21 +22,24 @@ public class Radix {
     }
   }
 
-  // public static void radixSortSimple(SortableLinkedList data){
-  //   SortableLinkedList[] buckets = new SortableLinkedList[10];
-  //   for(int i = 0; i < buckets.length; ++i) {
-  //     buckets[i] = new SortableLinkedList();
-  //   }
-  //   int numPasses = 1;
-  //   for(int i = 0; i < numPasses; i++){
-  //     for(int j = 0; j < data.size(); j++){
-  //       int value = data.remove(0);
-  //       int digit = nth(value, i);
-  //     }
-  //     stuff
-  //   }
-  //
-  // }
+  public static void radixSortSimple(SortableLinkedList data){
+    SortableLinkedList[] buckets = new SortableLinkedList[10];
+    for(int i = 0; i < buckets.length; ++i) {
+      buckets[i] = new SortableLinkedList();
+    }
+    int numPasses = 1;
+    for(int i = 0; i < numPasses; i++){
+      for(int j = 0; j < data.size(); j++){
+        int value = data.remove(0);
+        int digit = nth(value, i);
+        buckets[digit].add(value);
+        if (length(value) > numPasses) {
+          numPasses = length(value);
+        }
+      }
+      merge(data, buckets);
+    }
+  }
 
   //Tester
   // public static void main(String[]args){
