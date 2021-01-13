@@ -42,23 +42,40 @@ public class Radix {
     }
   }
 
-  // public static void radixSort(SortableLinkedList data){
-  //
-  // }
+  public static void radixSort(SortableLinkedList data){
+    SortableLinkedList positives = new SortableLinkedList();
+    SortableLinkedList negatives = new SortableLinkedList();
+    while (data.size() > 0){
+      int value = data.remove(0);
+      if (value < 0){
+        negatives.add(value);
+      }
+      else {
+        positives.add(value);
+      }
+    }
+    radixSortSimple(positives);
+    radixSortSimple(negatives);
+    // System.out.println(negatives);
+    while(negatives.size() > 0) {
+      data.add(negatives.remove(negatives.size() - 1));
+    }
+    data.extend(positives);
+  }
 
   //Tester
   // public static void main(String[]args){
   //   SortableLinkedList r = new SortableLinkedList();
-  //   r.add(23);
-  //   r.add(11);
-  //   r.add(67);
-  //   r.add(99);
-  //   r.add(5);
-  //   r.add(104);
-  //   r.add(134);
-  //   r.add(1034);
-  //   r.add(404);
-  //   radixSortSimple(r);
+  //   r.add(-3);
+  //   r.add(-5);
+  //   r.add(-1);
+  //   r.add(15);
+  //   r.add(9);
+  //   r.add(-100);
+  //   r.add(-45);
+  //   r.add(10324);
+  //   r.add(509);
+  //   radixSort(r);
   //   System.out.println(r);
   // }
 
