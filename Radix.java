@@ -28,15 +28,15 @@ public class Radix {
       buckets[i] = new SortableLinkedList();
     }
     // Biggest digit length
-    int k = 0;
-    for(int i = 0; i < data.size(); ++i) {
-      k = Math.max(k, length(data.get(i)));
-    }
+    int k = 1;
     for(int i = 0; i < k; i++){
       while(data.size()>0){
         int value = data.remove(0);
         int digit = nth(value, i);
         buckets[digit].add(value);
+        if (length(value) > k) {
+          k = length(value);
+        }
       }
       merge(data, buckets);
     }
@@ -75,6 +75,7 @@ public class Radix {
   //   r.add(-45);
   //   r.add(10324);
   //   r.add(509);
+  //   r.add(0);
   //   radixSort(r);
   //   System.out.println(r);
   // }
