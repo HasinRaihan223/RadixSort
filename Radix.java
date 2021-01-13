@@ -1,10 +1,7 @@
 public class Radix {
 
   public static int nth(int n, int col){
-    for (int i=0; i<col; i++){
-      n /= 10;
-    }
-    return n % 10;
+    return (Math.abs(n) / (int)(Math.pow(10, col))) % 10;
   }
 
   public static int length(int n){
@@ -24,6 +21,22 @@ public class Radix {
       original.extend(buckets[i]);
     }
   }
+
+  // public static void radixSortSimple(SortableLinkedList data){
+  //   SortableLinkedList[] buckets = new SortableLinkedList[10];
+  //   for(int i = 0; i < buckets.length; ++i) {
+  //     buckets[i] = new SortableLinkedList();
+  //   }
+  //   int numPasses = 1;
+  //   for(int i = 0; i < numPasses; i++){
+  //     for(int j = 0; j < data.size(); j++){
+  //       int value = data.remove(0);
+  //       int digit = nth(value, i);
+  //     }
+  //     stuff
+  //   }
+  //
+  // }
 
   //Tester
   // public static void main(String[]args){
