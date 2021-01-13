@@ -24,32 +24,42 @@ public class Radix {
 
   public static void radixSortSimple(SortableLinkedList data){
     SortableLinkedList[] buckets = new SortableLinkedList[10];
-    for(int i = 0; i < buckets.length; ++i) {
+    for(int i = 0; i < buckets.length; i++) {
       buckets[i] = new SortableLinkedList();
     }
-    int numPasses = 1;
-    for(int i = 0; i < numPasses; i++){
-      for(int j = 0; j < data.size(); j++){
+    // Biggest digit length
+    int k = 0;
+    for(int i = 0; i < data.size(); ++i) {
+      k = Math.max(k, length(data.get(i)));
+    }
+    for(int i = 0; i < k; i++){
+      while(data.size()>0){
         int value = data.remove(0);
         int digit = nth(value, i);
         buckets[digit].add(value);
-        if (length(value) > numPasses) {
-          numPasses = length(value);
-        }
       }
       merge(data, buckets);
     }
   }
 
+  // public static void radixSort(SortableLinkedList data){
+  //
+  // }
+
   //Tester
   // public static void main(String[]args){
-  //   Radix r = new Radix();
-  //   int a =-2345;
-  //   int b =0;
-  //   int c= 21001245;
-  //   System.out.println(r.length(a));
-  //   System.out.println(r.length(b));
-  //   System.out.println(r.length(c));
+  //   SortableLinkedList r = new SortableLinkedList();
+  //   r.add(23);
+  //   r.add(11);
+  //   r.add(67);
+  //   r.add(99);
+  //   r.add(5);
+  //   r.add(104);
+  //   r.add(134);
+  //   r.add(1034);
+  //   r.add(404);
+  //   radixSortSimple(r);
+  //   System.out.println(r);
   // }
 
 }
